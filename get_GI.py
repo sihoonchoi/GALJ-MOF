@@ -8,7 +8,7 @@ from ase.io import read
 from amptorch.preprocessing import AtomsToData
 from amptorch.descriptor.GMPOrderNorm import GMPOrderNorm
 
-mof = read('./MOFs/{}'.format(sys.argv[1]))
+mof = read('./MOF/{}'.format(sys.argv[1]))
 
 elements = mof.get_chemical_symbols()
 elements = list(set(elements))
