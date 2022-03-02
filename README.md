@@ -24,6 +24,9 @@ S. Choi, D. S. Sholl, and A. J. Medford, Gaussian Approximation of Dispersion Po
 - NumPy
 - SciPy
 - Atomic Simulation Environment (ASE)
+- PyTorch
+- Skorch
+- AMPTorch
 
 ### Acknowledgements
 - This works was supported by the Department of Energy, Office of Science, Basic Energy Sciences, under Award #DE-SC0020306.
