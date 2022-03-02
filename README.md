@@ -8,6 +8,8 @@
 
 2. Paramaters of 8 Gaussians for each element will be saved in the **gaussian_params** directory.
 
+3. `get_GI.py` generates GI descriptors based on GALJ. The code is adapted from [**AMPtorch/CEMT**](https://github.com/ulissigroup/amptorch/tree/CEMT). For installation and instruction of the **AMPtorch** package, please refer to its [GitHub repo](https://github.com/ulissigroup/amptorch).
+
 ---
 
 If you use GALJ-MOF in a scientific publication, please cite the following paper:
