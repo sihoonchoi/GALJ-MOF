@@ -8,9 +8,9 @@
 
 2. Paramaters of 8 Gaussians for each element will be saved in the **gaussian_params** directory.
 
-3. To generate GI descriptors, run `python get_GI.py filename.cif` where `filename.cif` is a CIF file of a MOF in the **MOFs** directory. The resulting GI descriptors will be saved in the **GI** directory as `filename.npy`.
+3. To generate GI descriptors, run `python get_gi.py filename.cif` where `filename.cif` is a CIF file of a MOF in the **MOFs** directory. The resulting GI descriptors will be saved in the **GI** directory as `filename.npy`.
 
-4. The first 3 columns in `filename.py` are the x, y, and z coordinates of grid points. The following columns are GI descriptors with corresponding `sigma` defined in `get_GI.py`.
+4. The first 3 columns in `filename.npy` are the x, y, and z coordinates of grid points. The following columns are GI descriptors with the corresponding `sigma` defined in `get_gi.py`.
 
 ---
 
