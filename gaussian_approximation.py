@@ -130,7 +130,7 @@ if not os.path.isdir('./figures'):
 if not os.path.isdir('./gaussian_params'):
     os.makedirs('./gaussian_params')
 
-with open('./LJ_params.def', 'r') as f:
+with open('./lj_params.def', 'r') as f:
     lines = f.readlines()
 
 # optimizing O
