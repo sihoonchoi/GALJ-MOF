@@ -30,4 +30,4 @@ S. Choi, D. S. Sholl, and A. J. Medford, Gaussian Approximation of Dispersion Po
 
 ### Acknowledgements
 - This works was supported by the Department of Energy, Office of Science, Basic Energy Sciences, under Award #DE-SC0020306.
-- The codes in `get_GI.py` is adapted from [**AMPtorch/CEMT**](https://github.com/ulissigroup/amptorch/tree/CEMT). For installation and instruction of the **AMPtorch** package, please refer to its [GitHub repo](https://github.com/ulissigroup/amptorch).
+- The codes in `get_gi.py` is adapted from [**AMPtorch/CEMT**](https://github.com/ulissigroup/amptorch/tree/CEMT). For installation and instruction of the **AMPtorch** package, please refer to its official [GitHub repo](https://github.com/ulissigroup/amptorch).
