@@ -17,9 +17,9 @@ print("Generating GMP descriptors for {}".format(sys.argv[1][:-4]))
 
 grid_spacing = 0.2
 
-x = np.ceil(mof.cell.cellpar()[0] / 0.2)
-y = np.ceil(mof.cell.cellpar()[1] / 0.2)
-z = np.ceil(mof.cell.cellpar()[2] / 0.2)
+x = int(np.ceil(mof.cell.cellpar()[0] / 0.2))
+y = int(np.ceil(mof.cell.cellpar()[1] / 0.2))
+z = int(np.ceil(mof.cell.cellpar()[2] / 0.2))
 
 positions = []
 for i in range(x):
