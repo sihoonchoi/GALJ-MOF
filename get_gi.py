@@ -25,7 +25,7 @@ positions = []
 for i in range(x):
     for j in range(y):
         for k in range(z):
-            pos = mof.cell[0] * i / grid.shape[0] + mof.cell[1] * j / grid.shape[1] + mof.cell[2] * k / grid.shape[2]
+            pos = mof.cell[0] * i / x + mof.cell[1] * j / y + mof.cell[2] * k / z
             positions.append(list(pos))
 positions = np.array(positions)
 
