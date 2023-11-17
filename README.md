@@ -24,7 +24,7 @@ The generated GI descriptors will be stored in the **descriptors** directory und
 
 If you use GALJ-MOF in a scientific publication, please cite the following paper:
 
-S. Choi, D. S. Sholl, and A. J. Medford, Gaussian Approximation of Dispersion Potentials for Efficient Featurization and Machine-Learning Predictions of Metal-Organic Frameworks, *J. Chem. Phys.* (2022) (Submitted)
+S. Choi, D. S. Sholl, and A. J. Medford, Gaussian Approximation of Dispersion Potentials for Efficient Featurization and Machine-Learning Predictions of Metal-Organic Frameworks, *J. Chem. Phys.* 2022, 156, 214108. DOI: https://doi.org/10.1063/5.0091405
 
 ---
 
