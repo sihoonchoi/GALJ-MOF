@@ -1,67 +1,73 @@
 import numpy as np
-import sys
+import glob
 import os
 
-from ase import Atom, Atoms
 from ase.io import read
 
 from amptorch.preprocessing import AtomsToData
 from amptorch.descriptor.GMPOrderNorm import GMPOrderNorm
 
-mof = read('./MOF/{}'.format(sys.argv[1]))
+def main(args):
+    path = 'descriptors'
+    if not os.path.isdir(path):
+        os.makedirs(path)
 
-elements = mof.get_chemical_symbols()
-elements = list(set(elements))
+    mofs = glob.glob(f'{args.mof_dir}/*.cif')
+    for mof in mofs:
+        atoms = read(mof)
+        elements = atoms.get_chemical_symbols()
+        elements = list(set(elements))
 
-print("Generating GMP descriptors for {}".format(sys.argv[1][:-4]))
+        print(f"Generating GMP descriptors for {mof[:-4]}")
 
-grid_spacing = 0.2
+        x = int(np.ceil(atoms.cell.cellpar()[0] / args.grid_spacing))
+        y = int(np.ceil(atoms.cell.cellpar()[1] / args.grid_spacing))
+        z = int(np.ceil(atoms.cell.cellpar()[2] / args.grid_spacing))
 
-x = np.ceil(mof.cell.cellpar()[0] / 0.2)
-y = np.ceil(mof.cell.cellpar()[1] / 0.2)
-z = np.ceil(mof.cell.cellpar()[2] / 0.2)
+        positions = []
+        for i in range(x):
+            for j in range(y):
+                for k in range(z):
+                    pos = atoms.cell[0] * i / x + atoms.cell[1] * j / y + atoms.cell[2] * k / z
+                    positions.append(list(pos))
+        positions = np.array(positions)
 
-positions = []
-for i in range(x):
-    for j in range(y):
-        for k in range(z):
-            pos = mof.cell[0] * i / grid.shape[0] + mof.cell[1] * j / grid.shape[1] + mof.cell[2] * k / grid.shape[2]
-            positions.append(list(pos))
-positions = np.array(positions)
+        GMPs = {
+            "MCSHs": {
+                "orders": [0],
+                "sigmas": args.sigma
+                },
+            "atom_gaussians": {},
+            "cutoff": max(20, 5 * max(np.array(args.sigma)) + 5),
+            "square": False
+        }
 
-sigmas = [0.000001, 0.25, 0.5] # sigma = 1e-6 is equivalent to 1-D energy histograms
+        for element in elements:
+            GMPs['atom_gaussians'][element] = "./gaussian_params/{}.g".format(element)
 
-GMPs = {
-    "MCSHs": {
-        "orders": [0],
-        "sigmas": sigmas
-        },
-    "atom_gaussians": {},
-    "cutoff": 10,
-    "square": False
-}
+        descriptor = GMPOrderNorm(MCSHs = GMPs, elements = elements)
+        # descriptor_setup = ('gmpordernorm', GMPs, GMPs.get('cutoff_distance'), elements)
 
-for element in elements:
-    GMPs['atom_gaussians'][element] = "./gaussian_params/{}.g".format(element)
+        a2d = AtomsToData(
+            descriptor = descriptor,
+            r_energy = False,
+            r_forces = False,
+            save_fps = False,
+            fprimes = False)
 
-descriptor = GMPOrderNorm(MCSHs = GMPs, elements = elements)
-descriptor_setup = ('gmpordernorm', GMPs, GMPs.get('cutoff_distance'), elements)
+        do = a2d.convert(atoms, ref_positions = positions, idx = 0)
+        fps = do.fingerprint.numpy()
+        descriptors = np.concatenate((positions, fps), axis = 1)
 
-a2d = AtomsToData(
-    descriptor = descriptor,
-    r_energy = False,
-    r_forces = False,
-    save_fps = False,
-    fprimes = False)
+        with open(f'{path}/{mof.split("/")[-1][:-4]}.npy', 'wb') as f:
+            np.save(f, descriptors)
 
-do = a2d.convert(mof, ref_positions = positions, idx = 0)
-fps = do.fingerprint.numpy()
-descriptors = np.concatenate((positions, fps), axis = 1)
+if __name__ == '__main__':
+    import argparse
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--mof-dir", required = True, type = str)
+    parser.add_argument("--sigma", required = True, nargs = '+', type = float)
+    parser.add_argument("--grid-spacing", default = 0.2, type = float)
+    args = parser.parse_args()
 
-path = './GI'
-
-if not os.path.isdir(path):
-    os.makedirs(path)
-
-with open('{}/{}.npy'.format(path, sys.argv[1][:-4]), 'wb') as f:
-    np.save(f, descriptors)
+    main(args)
