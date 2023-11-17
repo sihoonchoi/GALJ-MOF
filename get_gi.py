@@ -8,7 +8,7 @@ from amptorch.preprocessing import AtomsToData
 from amptorch.descriptor.GMPOrderNorm import GMPOrderNorm
 
 def main(args):
-    path = 'descriptors'
+    path = 'grids'
     if not os.path.isdir(path):
         os.makedirs(path)
 

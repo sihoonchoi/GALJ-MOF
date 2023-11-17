@@ -8,13 +8,13 @@
 
 2. Paramaters of 8 Gaussians for each element will be saved in the **gaussian_params** directory.
 
-3. To generate GI descriptors, execute the command `python get_gi.py`. Include the following arguments for customization:
+3. To generate GI descriptor grids, execute the command `python get_gi.py`. Include the following arguments for customization:
 
 - `--mof-dir`: path to the directory containing CIF files
 - `--sigma`: a list of `sigma` parameters to generate GI descriptors
 - `--grid-spacing`: grid spacing of GI grids (default: 0.2)
 
-The generated GI descriptors will be stored in the **descriptors** directory under the filename `mofname.npy`. To execute the `get_gi.py` script, use the command like:
+The generated GI descriptor grids will be stored in the **grids** directory under the filename `mofname.npy`. To execute the `get_gi.py` script, use the command like:
 
 `python get_gi.py --mof-dir MOFs --sigma 0.1 0.2 0.3 --grid_spacing 0.5`
 
