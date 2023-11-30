@@ -16,7 +16,7 @@
 
 The generated GI descriptor grids will be stored in the **grids** directory under the filename `mofname.npy`. To execute the `get_gi.py` script, use the command like:
 
-`python get_gi.py --mof-dir MOFs --sigma 0.1 0.2 0.3 --grid_spacing 0.5`
+`python get_gi.py --mof-dir MOFs --sigma 0.1 0.2 0.3 --grid-spacing 0.5`
 
 4. The first 3 columns in `mofname.npy` represent the x, y, and z coordinates of grid points. Subsequent columns contain GI descriptors with their corresponding `--sigma` values.
 
