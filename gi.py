@@ -104,10 +104,10 @@ if __name__ == '__main__':
     parser.add_argument("--system", required = True, type = str)
     parser.add_argument("--name", required = True, type = str)
     parser.add_argument("--sigmas", required = True, nargs = '+', type = float)
+    parser.add_argument("--mcsh-order", default = 2, type = int)
     parser.add_argument("--target-dir", default = '.', type = str)
     parser.add_argument("--mof-pool", default = 'mean', type = str)
     parser.add_argument("--mol-pool", default = 'com', type = str)
-    parser.add_argument("--mcsh-order", default = 2, type = int)
     args = parser.parse_args()
 
     main(args)
