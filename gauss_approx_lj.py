@@ -7,8 +7,6 @@ from scipy.optimize import minimize
 
 warnings.simplefilter('ignore')
 
-# defining functions
-
 def get_result(x0, r):
     n = int(len(x0) / 2)
     result = np.zeros(len(r))
@@ -88,12 +86,12 @@ def plot_result(x, elem, sigma, epsilon):
     axes[1].legend([e], ['absolute error'], fontsize = 'large')
     
     plt.tight_layout()
-    plt.savefig('./figures/{}.png'.format(elem))
+    plt.savefig('./figures/lj/{}.png'.format(elem))
     plt.show()
     plt.close()
     
 def save_gaussian(x0, elem):
-    result_filename = "./gaussian_params/{}.g".format(elem)
+    result_filename = "./gaussian_params//lj/{}.g".format(elem)
     
     f = open(result_filename, "w")
     n = int(len(x0) / 2)
@@ -124,11 +122,8 @@ def get_optimized(elem, sigma, epsilon, x0, r, plot = False):
 
 R = 8.31446261815324
 
-if not os.path.isdir('./figures'):
-    os.makedirs('./figures')
-
-if not os.path.isdir('./gaussian_params'):
-    os.makedirs('./gaussian_params')
+os.makedirs('./figures/lj/', exist_ok = True)
+os.makedirs('./gauss_params/lj', exist_ok = True)
 
 with open('./lj_params.def', 'r') as f:
     lines = f.readlines()
