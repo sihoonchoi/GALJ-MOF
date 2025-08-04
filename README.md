@@ -1,8 +1,6 @@
-# GI
+# Gaussian Integral (GI) Descriptors
 
-**GI** (**G**aussian **I**ntegral) Descriptors
-
-## Usage
+## Instruction
 
 ### 1. Run Gaussian Approximation
 To perform Gaussian approximation of the original Lennard-Jones (LJ) potential curves, run:
@@ -44,14 +42,6 @@ python gi.py --system --name OPAGIX --sigmas 0.1 0.2 0.3 --mcsh-orde 2 --mof-poo
 
 The resulting GI descriptors will be saved in the `descriptors/` directory with the filename `{system}.csv`.
 
----
-
-If you use the GI descriptor scheme in a scientific publication, please cite the following paper:
-
-S. Choi, D. S. Sholl, and A. J. Medford, Gaussian Approximation of Dispersion Potentials for Efficient Featurization and Machine-Learning Predictions of Metal-Organic Frameworks, *J. Chem. Phys.* 2022, 156, 214108. DOI: https://doi.org/10.1063/5.0091405
-
----
-
 ### Dependencies
 - NumPy
 - SciPy
@@ -59,6 +49,14 @@ S. Choi, D. S. Sholl, and A. J. Medford, Gaussian Approximation of Dispersion Po
 - PyTorch
 - Skorch
 - AMPTorch
+
+---
+
+If you use the GI descriptor scheme in a scientific publication, please cite the following paper:
+
+S. Choi, D. S. Sholl, and A. J. Medford, Gaussian Approximation of Dispersion Potentials for Efficient Featurization and Machine-Learning Predictions of Metal-Organic Frameworks, *J. Chem. Phys.* 2022, 156, 214108. DOI: https://doi.org/10.1063/5.0091405
+
+---
 
 ### Acknowledgements
 - This works was supported by the Department of Energy, Office of Science, Basic Energy Sciences, under Award #DE-SC0020306.
