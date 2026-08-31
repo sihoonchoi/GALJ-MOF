@@ -20,7 +20,7 @@ The optimized Gaussian parameters for each element will be saved in:
 ### 2. Generate GI Descriptor Vectors
 To compute the GI descriptors, run the following command:
 ```bash
-python gi.py --system --name OPAGIX --sigmas 0.1 0.2 0.3 --mcsh-orde 2 --mof-pool mean --mol-pool com
+python gi.py --system --name OPAGIX --sigmas 0.1 0.2 0.3 --mcsh-order 2 --mof-pool mean --mol-pool com
 ```
 
 **Required Arguments**
